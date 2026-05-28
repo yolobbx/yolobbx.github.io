@@ -16,7 +16,6 @@ const pad = (n: number) => String(n).padStart(2, '0');
   <div class="container container--narrow">
     <header class="cat-header">
       <div class="cat-header__eyebrow">{cat.eyebrow}</div>
-      <h1 class="cat-header__title">{cat.title}</h1>
       <p class="cat-header__blurb">{cat.blurb}</p>
     </header>
 
@@ -31,7 +30,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
     <section style="margin-top: 64px;">
       <details class="playlist" open>
         <summary class="playlist__summary">
-          <span class="playlist__label">Now Playing · DnB</span>
+          <span class="playlist__label">Now Playing</span>
           <span class="playlist__meta">{tracks.length} tracks</span>
           <span class="playlist__chevron" aria-hidden="true">▾</span>
         </summary>
@@ -48,9 +47,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
                 )}
               </div>
               <div class="track__body">
-                <span class="track__title">
-                  <span class="track__genre">{t.genre}</span>{t.artist} — {t.title}
-                </span>
+                <span class="track__title">{t.artist} — {t.title}</span>
                 <audio controls preload="none">
                   <source src={t.src} type="audio/mpeg" />
                 </audio>

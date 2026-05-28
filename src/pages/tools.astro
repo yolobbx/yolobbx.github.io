@@ -13,7 +13,6 @@ const posts = (await getCollection('posts', ({ data }) => data.category === 'too
   <div class="container container--narrow">
     <header class="cat-header">
       <div class="cat-header__eyebrow">{cat.eyebrow}</div>
-      <h1 class="cat-header__title">{cat.title}</h1>
       <p class="cat-header__blurb">{cat.blurb}</p>
     </header>
 

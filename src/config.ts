@@ -1,5 +1,5 @@
 export const site = {
-  title: 'AI · Tools · Music',
+  title: 'Refine · Gather · Advance',
   tagline: 'by yolobbx',
   description:
     "Field notes on AI research, tools, and music — by yolobbx, an AI grad student working on action recognition.",

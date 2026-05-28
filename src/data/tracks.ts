@@ -1,18 +1,52 @@
 export interface Track {
   title: string;
   artist: string;
-  genre: string;
   src: string;
   cover?: string; // optional album art, e.g. '/music/covers/xxx.jpg'
 }
 
 // Edit this list to update "now playing". Files live in public/music/...
 export const tracks: Track[] = [
-  { artist: 'Colaps',          title: 'Moments Away',     genre: 'DnB', src: '/music/dnb/Colaps - Moments Away.mp3' },
-  { artist: 'Raje',            title: 'YAMA',             genre: 'DnB', src: '/music/dnb/Raje - YAMA.mp3' },
-  { artist: 'KBA, Mr. Esuoh',  title: 'Dimension (VIP)',  genre: 'DnB', src: '/music/dnb/KBA, Mr. Esuoh - Dimension (VIP).mp3' },
-  { artist: '808Banon',        title: 'Stone Cold',       genre: 'DnB', src: '/music/dnb/808Banon - Stone cold.mp3' },
-  { artist: 'KBA',             title: 'Soon Again',       genre: 'DnB', src: '/music/dnb/KBA - Soon Again.mp3' },
-  { artist: 'LFO',             title: 'POWER',            genre: 'DnB', src: '/music/dnb/LFO - POWER.mp3' },
-  { artist: 'ZhangZe',         title: 'G Fish Tofu',      genre: 'DnB', src: '/music/dnb/ZhangZe - G fish Tofu.mp3' },
+  {
+    artist: 'Billie Holiday',
+    title:  'Solitude',
+    src:    '/music/Billie Holiday - Solitude.mp3',
+    cover:  '/music/covers/Billie Holiday - Solitude.jpg',
+  },
+  {
+    artist: 'Chanpan, Ladji Mouflet',
+    title:  'Jungle',
+    src:    '/music/Chanpan, Ladji Mouflet - jungle.mp3',
+    cover:  '/music/covers/Chanpan, Ladji Mouflet - jungle.jpg',
+  },
+  {
+    artist: 'Dari',
+    title:  'GBB26 Wildcard',
+    src:    '/music/Dari  - GBB26Wildcard.mp3',
+    cover:  '/music/covers/Dari  - GBB26Wildcard.jpeg',
+  },
+  {
+    artist: 'Mochakk',
+    title:  'Express Yourself (Remix)',
+    src:    '/music/Express Yourself - Mochakk Remix.mp3',
+    cover:  '/music/covers/Express Yourself - Mochakk Remix.jpg',
+  },
+  {
+    artist: 'Mahiro',
+    title:  'REMNANT',
+    src:    '/music/Mahiro - REMNANT.mp3',
+    cover:  '/music/covers/Mahiro - REMNANT.jpg',
+  },
+  {
+    artist: 'MYTHM',
+    title:  'Grim',
+    src:    '/music/MYTHM - Grim.mp3',
+    cover:  '/music/covers/MYTHM - Grim.jpg',
+  },
+  {
+    artist: 'Pete Rock, InI',
+    title:  'Grown Man Sport',
+    src:    '/music/Pete Rock, InI - Grown Man Sport.mp3',
+    cover:  '/music/covers/Pete Rock, InI - Grown Man Sport.jpg',
+  },
 ];
