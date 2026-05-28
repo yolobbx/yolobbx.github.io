@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { categories } from '~/config';
+
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+  showCategory?: boolean;
+}
+
+const { posts, showCategory = true } = Astro.props;
+
+function fmtDate(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y} · ${m} · ${day}`;
+}
+---
+
+{posts.length === 0 ? (
+  <p class="empty-note">nothing here yet — first notes coming soon.</p>
+) : (
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li class="post-list__item">
+        <a href={`/posts/${post.id}/`}>
+          <span class="post-list__date">{fmtDate(post.data.date)}</span>
+          <span class="post-list__title">{post.data.title}</span>
+          {showCategory && (
+            <span class="post-list__cat">{categories[post.data.category].title}</span>
+          )}
+        </a>
+      </li>
+    ))}
+  </ul>
+)}

@@ -1,0 +1,27 @@
+---
+import { site } from '~/config';
+---
+
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <div>{site.footerText}</div>
+
+    <div class="footer__links">
+      {site.links.github && (
+        <a href={`https://github.com/${site.links.github}`} target="_blank" rel="noopener">github</a>
+      )}
+      {site.links.email && (
+        <a href={`mailto:${site.links.email}`}>email</a>
+      )}
+      <a href="/rss.xml">rss</a>
+    </div>
+
+    <div class="busuanzi">
+      <span id="busuanzi_container_site_pv">views <span id="busuanzi_value_site_pv"></span></span>
+      ·
+      <span id="busuanzi_container_site_uv">visitors <span id="busuanzi_value_site_uv"></span></span>
+    </div>
+  </div>
+</footer>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>

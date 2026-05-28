@@ -1,0 +1,42 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { categories, type Category } from '~/config';
+
+interface Props {
+  title: string;
+  date: Date;
+  category: Category;
+  description?: string;
+}
+
+const { title, date, category, description } = Astro.props;
+const cat = categories[category];
+
+function fmtDate(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y} · ${m} · ${day}`;
+}
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="container container--narrow">
+    <header class="post-header">
+      <div class="post-meta">
+        <time datetime={date.toISOString()}>{fmtDate(date)}</time>
+        <a href={`/${category}/`}>{cat.title}</a>
+      </div>
+      <h1 class="post-title">{title}</h1>
+    </header>
+
+    <div class="post-body">
+      <slot />
+    </div>
+
+    <footer class="post-footer">
+      <a href="/">← home</a>
+      <a href={`/${category}/`}>more in {cat.title} →</a>
+    </footer>
+  </article>
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import PostList from '~/components/PostList.astro';
+import { site } from '~/config';
+import { getCollection } from 'astro:content';
+
+const allPosts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const recent = allPosts.slice(0, 8);
+---
+
+<BaseLayout>
+  <section class="container container--narrow">
+    <header class="hero">
+      <div class="hero__eyebrow">{site.tagline}</div>
+      <h1 class="hero__title">AI<span class="hero__dot"> · </span>Tools<span class="hero__dot"> · </span>Music</h1>
+      <p class="hero__lede">
+        Field notes from an AI grad student working on action recognition. Half research log,
+        half collection of tools and music I keep coming back to.
+      </p>
+    </header>
+
+    <section>
+      <div class="section-head">
+        <h3 class="section-head__title">Recent</h3>
+        <span class="section-head__meta">{allPosts.length} total</span>
+      </div>
+      <PostList posts={recent} />
+    </section>
+  </section>
+</BaseLayout>

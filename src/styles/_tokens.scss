@@ -1,0 +1,50 @@
+// ─────────────────────────────────────────────────────────
+//  Design tokens · Field-notes aesthetic
+// ─────────────────────────────────────────────────────────
+
+// Type scale (modular, 1.2 minor third)
+$fs-xs:   12px;
+$fs-sm:   14px;
+$fs-base: 17px;
+$fs-md:   19px;
+$fs-lg:   22px;
+$fs-xl:   28px;
+$fs-2xl:  38px;
+$fs-3xl:  52px;
+
+// Spacing scale
+$sp-1: 4px;
+$sp-2: 8px;
+$sp-3: 12px;
+$sp-4: 16px;
+$sp-5: 24px;
+$sp-6: 32px;
+$sp-7: 48px;
+$sp-8: 64px;
+$sp-9: 96px;
+
+// Layout
+$reading-width: 680px;
+$wide-width:    1080px;
+$nav-height:    72px;
+
+// Type stacks
+$ff-sans: "Switzer", "Inter", -apple-system, BlinkMacSystemFont,
+          "PingFang SC", "Noto Sans SC", "Microsoft YaHei",
+          "Helvetica Neue", Arial, sans-serif;
+
+$ff-mono: "JetBrains Mono", "SF Mono", ui-monospace, "Menlo",
+          "Cascadia Code", Consolas, monospace;
+
+// Breakpoint mixins
+@mixin mobile {
+  @media screen and (max-width: 720px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: 960px) {
+    @content;
+  }
+}

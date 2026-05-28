@@ -1,0 +1,56 @@
+---
+import { site, navigation } from '~/config';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+const normalize = (p: string) => (p.endsWith('/') ? p : p + '/');
+const current = normalize(currentPath);
+
+function isActive(href: string) {
+  const h = normalize(href);
+  if (h === '/') return current === '/';
+  return current.startsWith(h);
+}
+---
+
+<nav class="nav">
+  <div class="container nav__inner">
+    <a href="/" class="nav__brand">
+      <span class="nav__brand-title">{site.title}</span>
+      <span class="nav__brand-sub">{site.tagline}</span>
+    </a>
+
+    <div class="nav__links">
+      {navigation.map((item) => (
+        <a href={item.href} class={isActive(item.href) ? 'is-active' : ''}>{item.name}</a>
+      ))}
+
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+        <span id="theme-toggle-icon">☾</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    var icon = document.getElementById('theme-toggle-icon');
+    if (!btn || !icon) return;
+    function syncIcon() {
+      var t = document.documentElement.getAttribute('data-theme');
+      icon.textContent = t === 'dark' ? '☀' : '☾';
+    }
+    syncIcon();
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme') || 'light';
+      var next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      syncIcon();
+    });
+  })();
+</script>

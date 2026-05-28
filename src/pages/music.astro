@@ -1,0 +1,64 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import PostList from '~/components/PostList.astro';
+import { categories } from '~/config';
+import { getCollection } from 'astro:content';
+import { tracks } from '~/data/tracks';
+
+const cat = categories.music;
+const posts = (await getCollection('posts', ({ data }) => data.category === 'music' && !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<BaseLayout title={cat.title} description={cat.blurb}>
+  <div class="container container--narrow">
+    <header class="cat-header">
+      <div class="cat-header__eyebrow">{cat.eyebrow}</div>
+      <h1 class="cat-header__title">{cat.title}</h1>
+      <p class="cat-header__blurb">{cat.blurb}</p>
+    </header>
+
+    <section>
+      <div class="section-head">
+        <h3 class="section-head__title">Beatbox &amp; Notes</h3>
+        <span class="section-head__meta">{posts.length} {posts.length === 1 ? 'piece' : 'pieces'}</span>
+      </div>
+      <PostList posts={posts} showCategory={false} />
+    </section>
+
+    <section style="margin-top: 64px;">
+      <details class="playlist" open>
+        <summary class="playlist__summary">
+          <span class="playlist__label">Now Playing · DnB</span>
+          <span class="playlist__meta">{tracks.length} tracks</span>
+          <span class="playlist__chevron" aria-hidden="true">▾</span>
+        </summary>
+
+        <ol class="tracks">
+          {tracks.map((t, i) => (
+            <li class="track">
+              <span class="track__num">{pad(i + 1)}</span>
+              <div class="track__cover">
+                {t.cover ? (
+                  <img src={t.cover} alt={`${t.artist} — ${t.title}`} loading="lazy" />
+                ) : (
+                  <span class="track__cover-ph" aria-hidden="true">♪</span>
+                )}
+              </div>
+              <div class="track__body">
+                <span class="track__title">
+                  <span class="track__genre">{t.genre}</span>{t.artist} — {t.title}
+                </span>
+                <audio controls preload="none">
+                  <source src={t.src} type="audio/mpeg" />
+                </audio>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </details>
+    </section>
+  </div>
+</BaseLayout>
