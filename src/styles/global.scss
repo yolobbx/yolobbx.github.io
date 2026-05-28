@@ -534,7 +534,7 @@ main {
     display: grid;
     grid-template-columns: 110px 1fr auto;
     gap: $sp-5;
-    align-items: baseline;
+    align-items: center;
     padding: $sp-4 0;
     background: none;
     color: var(--ink);
@@ -596,8 +596,8 @@ main {
 // ─────────────────────────────────────────────────────────
 
 .cat-header {
-  margin-bottom: $sp-7;
-  padding-bottom: $sp-6;
+  margin-bottom: $sp-5;
+  padding-bottom: $sp-4;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -821,6 +821,100 @@ main {
     &:hover { color: var(--accent); background: none; }
   }
 }
+
+// ─────────────────────────────────────────────────────────
+//  Post shell · 3-column with sticky TOC
+// ─────────────────────────────────────────────────────────
+
+.post-shell {
+  max-width: 1160px;
+  display: grid;
+  grid-template-columns: 240px minmax(0, $reading-width) 1fr;
+  gap: $sp-6;
+  align-items: start;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: minmax(0, $reading-width);
+    justify-content: center;
+    max-width: $reading-width;
+  }
+}
+
+.post-shell__side {
+  position: sticky;
+  top: calc(#{$nav-height} + #{$sp-5});
+  align-self: start;
+  max-height: calc(100vh - #{$nav-height} - #{$sp-7});
+  overflow-y: auto;
+  padding-right: $sp-3;
+  font-size: $fs-sm;
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
+}
+
+.post-shell__main {
+  min-width: 0;
+}
+
+// Anchor scroll-offset so jump targets clear the sticky nav
+.post-body :is(h1, h2, h3, h4, h5, h6) {
+  scroll-margin-top: calc(#{$nav-height} + #{$sp-4});
+}
+
+html { scroll-behavior: smooth; }
+
+// ─────────────────────────────────────────────────────────
+//  TOC
+// ─────────────────────────────────────────────────────────
+
+.toc {
+  padding: $sp-2 0 $sp-2 $sp-4;
+  border-left: 1px solid var(--rule);
+}
+
+.toc__label {
+  font-family: $ff-mono;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-mute);
+  margin-bottom: $sp-3;
+}
+
+.toc__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+}
+
+.toc__item {
+  list-style: none;
+  margin: 0;
+  line-height: 1.45;
+
+  &::before { content: none; }
+
+  a {
+    display: block;
+    background: none;
+    color: var(--ink-mute);
+    text-decoration: none;
+    transition: color 120ms ease;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+
+    &:hover { color: var(--ink); background: none; }
+    &.is-active { color: var(--accent); font-weight: 500; }
+  }
+}
+
+.toc__item--h3 a { padding-left: $sp-3; font-size: 13px; }
+.toc__item--h4 a { padding-left: $sp-5; font-size: 12px; }
 
 // ─────────────────────────────────────────────────────────
 //  Footer

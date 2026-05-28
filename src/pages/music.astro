@@ -19,13 +19,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
       <p class="cat-header__blurb">{cat.blurb}</p>
     </header>
 
-    <section>
-      <div class="section-head">
-        <h3 class="section-head__title">Beatbox &amp; Notes</h3>
-        <span class="section-head__meta">{posts.length} {posts.length === 1 ? 'piece' : 'pieces'}</span>
-      </div>
-      <PostList posts={posts} showCategory={false} />
-    </section>
+    <PostList posts={posts} showCategory={false} />
 
     <section style="margin-top: 64px;">
       <details class="playlist" open>

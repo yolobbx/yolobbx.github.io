@@ -1,5 +1,7 @@
 ---
+import type { MarkdownHeading } from 'astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import TOC from '~/components/TOC.astro';
 import { categories, type Category } from '~/config';
 
 interface Props {
@@ -7,9 +9,10 @@ interface Props {
   date: Date;
   category: Category;
   description?: string;
+  headings?: MarkdownHeading[];
 }
 
-const { title, date, category, description } = Astro.props;
+const { title, date, category, description, headings = [] } = Astro.props;
 const cat = categories[category];
 
 function fmtDate(d: Date): string {
@@ -21,22 +24,28 @@ function fmtDate(d: Date): string {
 ---
 
 <BaseLayout title={title} description={description}>
-  <article class="container container--narrow">
-    <header class="post-header">
-      <div class="post-meta">
-        <time datetime={date.toISOString()}>{fmtDate(date)}</time>
-        <a href={`/${category}/`}>{cat.title}</a>
+  <div class="post-shell container">
+    <aside class="post-shell__side">
+      <TOC headings={headings} />
+    </aside>
+
+    <article class="post-shell__main">
+      <header class="post-header">
+        <div class="post-meta">
+          <time datetime={date.toISOString()}>{fmtDate(date)}</time>
+          <a href={`/${category}/`}>{cat.title}</a>
+        </div>
+        <h1 class="post-title">{title}</h1>
+      </header>
+
+      <div class="post-body">
+        <slot />
       </div>
-      <h1 class="post-title">{title}</h1>
-    </header>
 
-    <div class="post-body">
-      <slot />
-    </div>
-
-    <footer class="post-footer">
-      <a href="/">← home</a>
-      <a href={`/${category}/`}>more in {cat.title} →</a>
-    </footer>
-  </article>
+      <footer class="post-footer">
+        <a href="/">← home</a>
+        <a href={`/${category}/`}>more in {cat.title} →</a>
+      </footer>
+    </article>
+  </div>
 </BaseLayout>

@@ -1,6 +1,5 @@
 export const site = {
-  title: 'Refine · Gather · Advance',
-  tagline: 'by yolobbx',
+  title: 'yolobbx',
   description:
     "Field notes on AI research, tools, and music — by yolobbx, an AI grad student working on action recognition.",
   author: 'yolobbx',
@@ -27,17 +26,17 @@ export const categories: Record<Category, { title: string; blurb: string; eyebro
     title: 'AI',
     eyebrow: '01 · AI',
     blurb:
-      "Notes on research and the AI products I actually use. Action recognition is my home turf; large models and the rest of ML are what I read around it.",
+      "聚焦人工智能领域内容，涵盖机器学习、深度学习、大模型与智能 Agent 相关实践，同时记录行为识别方向的科研思考、学习心得与研究思路",
   },
   tools: {
     title: 'Tools',
     eyebrow: '02 · TOOLS',
-    blurb: "Setup recipes, tinkering logs, and the small utilities that make a day go faster.",
+    blurb: "分享各类实用工具的使用技巧、配置教程，包括效率工具、云服务、中转服务等相关内容，梳理实操经验，助力提升日常使用与工作效率",
   },
   music: {
     title: 'Music',
     eyebrow: '03 · MUSIC',
     blurb:
-      "What I've been listening to lately, plus longer pieces on beatbox culture.",
+      "收录音乐相关内容，包含 Beatbox、DJ 文化、乐理知识、钢琴演奏以及编曲创作等方面的学习记录与心得分享",
   },
 };
