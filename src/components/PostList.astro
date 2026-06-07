@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { categories } from '~/config';
+import { getPostSlug } from '~/utils/posts';
 
 interface Props {
   posts: CollectionEntry<'posts'>[];
@@ -23,7 +24,7 @@ function fmtDate(d: Date): string {
   <ul class="post-list">
     {posts.map((post) => (
       <li class="post-list__item">
-        <a href={`/posts/${post.id}/`}>
+        <a href={`/posts/${getPostSlug(post)}/`}>
           <span class="post-list__date">{fmtDate(post.data.date)}</span>
           <span class="post-list__title">{post.data.title}</span>
           {showCategory && (

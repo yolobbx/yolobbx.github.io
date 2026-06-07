@@ -12,7 +12,7 @@ description: "安卓 / 苹果用户分别如何安装 Spotify、注册账号，�
 
 点开此[链接](https://wwbz.lanzoue.com/i2moB0u3u8bi)，输入密码 `52`，下载 apk 安装包，安装即可。
 
-![安卓安装包页面](/images/安卓安装包页面.png)
+![安卓安装包页面](./images/安卓安装包页面.png)
 
 ## 苹果安装 spotify
 
@@ -24,11 +24,11 @@ description: "安卓 / 苹果用户分别如何安装 Spotify、注册账号，�
 
 - 安卓用户可以下载 [clash](https://dl.clashforandroid.org/releases/latest/cfa-2.5.12-premium-universal-release.apk)
 
-![clash](/images/clash.png)
+![clash](./images/clash.png)
 
 - 苹果用户可以通过美区账号，付费下载小火箭
 
-![小火箭](/images/小火箭.png)
+![小火箭](./images/小火箭.png)
 
 - 去机场网站订阅节点，导入即可。
 - 恭喜你拥有了科学上网能力，后续只需要去 Spotify 官网，通过邮箱注册账号即可。
