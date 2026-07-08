@@ -8,7 +8,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "publish:post": "node scripts/publish-content.mjs",
+    "publish:all": "node scripts/publish-content.mjs --all"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.0",

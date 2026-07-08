@@ -1,6 +1,6 @@
 ---
 title: "Karpathy 的 AI 使用指南：从原理到实践的两小时"
-date: 2026-05-30
+date: 2026-06-07
 author: yolobbx
 category: ai
 description: "Karpathy 在 2025 年 2 月的两小时演讲中，自底向上讲解了如何正确使用 AI——从上下文窗口、深度思考到多模态交互，再到对 AI 时代生产力格局的思考。"

@@ -106,6 +106,46 @@ draft: false          # 设 true 不会发布
 
 文章里的图片放进 `public/images/`，引用路径 `/images/xxx.png`。
 
+### 转换到公众号 / 小红书
+
+转换方案见 `content-publishing-plan.md`。当前实现遵循：
+
+```text
+Markdown -> Document Model -> Presentation Model -> WeChat / Xiaohongshu Renderers
+```
+
+转换单篇文章：
+
+```bash
+npm run publish:post -- 2026-05-28-claude-code-tips
+```
+
+也可以直接传 Markdown 路径：
+
+```bash
+npm run publish:post -- src/content/posts/2026-05-28-claude-code-tips/index.md
+```
+
+转换全部文章：
+
+```bash
+npm run publish:all
+```
+
+默认输出到 `dist-publish/<slug>/`：
+
+| 文件 | 用途 |
+| --- | --- |
+| `document-model.json` | 忠实表示 Markdown 结构的中间模型 |
+| `presentation-model.json` | 面向平台发布的内容模型 |
+| `wechat.html` | 可复制到公众号编辑器的 HTML |
+| `wechat-preview.txt` | 公众号纯文本预览 |
+| `xiaohongshu-caption.md` | 小红书笔记文案和 tags |
+| `xiaohongshu-preview.html` | 小红书卡片预览页 |
+| `xiaohongshu-cards/*.svg` | 小红书竖版卡片素材 |
+
+`dist-publish/` 是生成产物，默认不进 Git。需要保存某次发布稿时，可以手动复制到其他目录再提交。
+
 ### 加音乐
 
 **步骤 1：放 mp3 文件**
