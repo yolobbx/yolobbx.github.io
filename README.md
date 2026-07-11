@@ -56,7 +56,6 @@ yolobbx.github.io/
 │   │   ├── tools.astro        # /tools/
 │   │   ├── music.astro        # /music/
 │   │   ├── about.astro        # /about/
-│   │   ├── rss.xml.ts         # /rss.xml
 │   │   └── posts/[...slug].astro  # /posts/<slug>/
 │   ├── styles/
 │   │   ├── _tokens.scss       # 设计 token（间距、字号、断点）
@@ -213,4 +212,3 @@ export const tracks: Track[] = [
 - **不用 React/Vue**：纯 Astro 组件够用，零运行时 JS，加载快。
 - **不蒜子访客统计**：仅在线上域名生效，本地或预览环境数据为空属正常。要去掉就删 `src/components/Footer.astro` 里 `busuanzi` 相关的 span 和最下方的 `<script>`。
 - **暗色模式**：通过 `<html data-theme="dark">` 切换，偏好存在 localStorage。
-- **RSS**：自动生成在 `/rss.xml`，订阅链接在 footer。
